@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>सहस्त्र चंद्र दर्शन - 1000 Full Moons since your birth date</title>
+<style>
+/* default styling. Nothing to do with freexing first row and column */
+main {display: flex;}
+main > * {border: 1px solid;}
+table {border-collapse: collapse; font-family: helvetica}
+td, th {border:  1px solid;
+      padding: 10px;
+      min-width: 200px;
+      background: white;
+      box-sizing: border-box;
+      text-align: left;
+}
+.table-container {
+  position: relative;
+  max-height:  300px;
+  width: 700px;
+  overflow: scroll;
+}
+
+thead th {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  background: hsl(20, 50%, 70%);
+}
+
+thead th:first-child {
+  left: 0;
+  z-index: 3;
+}
+
+tfoot {
+  position: -webkit-sticky;
+  bottom: 0;
+  z-index: 2;
+}
+
+tfoot td {
+  position: sticky;
+  bottom: 0;
+  z-index: 2;
+  background: hsl(20, 50%, 70%);
+}
+
+tfoot td:first-child {
+  z-index: 3;
+}
+
+body {  
+  font: 20px Verdana, sans-serif;
+}  
+      
+</style>
+</head>
+<body>
+
+
+<h3>Full moon data for birthday on <i>{{ bResult['dateAndTimeOfBirth'] }} IST </i> </h3>
+
+    <table class="t1">
+ 
+      <tr>
+        <td>First Full Moon </td>
+        <td>{{ bResult['firstFullMoon'] }}  IST</td>
+      </tr>
+      
+      <tr>
+        <td><strong>1000th Full Moon</strong></td>
+        <td><strong>{{ bResult['1000th Full Moon'] }}  IST </strong></td>
+      </tr>
+      
+    
+      
+       <tr>
+        <td>Your age today </td>
+        <td>{{ bResult['yourAgeToday'] }} </td>
+      </tr>    
+            
+       <tr>
+        <td>Your age on 1000th Full Moon</td>
+        <td>{{ bResult['age1000moon'] }} </td>
+      </tr>     
+      
+      
+  
+    </table>
+    
+    <BR/>
+    
+ Upcoming Full moon count will be <strong>{{ bResult['fullmooncountNow'] }} </strong> since your birthdate on <strong><i>{{ bResult['fullmooncountNowDate'] }} IST </i> </strong>
+ 
+<h3>Full Moon Dates since your birth</h3>
+     
+<!-- partial:index.partial.html -->
+<div class="table-container">
+  <div class="table-horizontal-container">
+    <table class="unfixed-table" >
+      <thead>
+        <tr><th width="10%">#</th><th width="90%">Full Moon Date and Time</th>
+      </thead>
+     <tbody>
+{% for message in bResult['myfullmoondates'] %}     
+        <tr><td width="10%">{{loop.index}}</td><td width="90%">{{ message }} IST</td>
+{% endfor %}
+     </tbody>
+   </table>
+  </div>
+</div>
+
+    <BR/>
+    
+    <a href="/">Try another date</a>
+   <BR/>
+   
+   
+  
+</body>
+</html>    
+

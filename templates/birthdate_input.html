@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>सहस्त्र चंद्र दर्शन - 1000 Full Moons since your birth date</title>
+
+<style>
+
+[type="date"] {
+  background:#fff url(https://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/calendar_2.png)  97% 50% no-repeat ;
+}
+[type="date"]::-webkit-inner-spin-button {
+  display: none;
+}
+[type="date"]::-webkit-calendar-picker-indicator {
+  opacity: 0;
+}
+
+/* custom styles */
+body {  
+  font: 22px Verdana, sans-serif;
+}
+label {
+  display: block;
+}
+input {
+  border: 1px solid #c4c4c4;
+  background-color: #fff;  
+  width: 95px;
+}
+
+.coc-block-row {
+    width: 100%;
+    /*display:table-row;*/
+}
+.coc-block {
+    display: table-cell;
+    vertical-align: middle;
+    padding-bottom: 3px;
+}
+.coc-block-label {
+  font-family: Verdana;
+  display: table-cell;
+  vertical-align: middle;
+  text-align: right;
+  padding-bottom: 3px;
+  padding-right: 5px;
+  font-weight: bold;
+  margin-bottom: 0;
+}
+.coc-input {
+  font-family: Calibri;
+  height: 40px;
+  font-size: 20px;
+  padding-left: 3px;
+  padding-right: 3px;
+  border: 1px solid #999;
+  /* variations */
+}
+.coc-form {
+    padding-top: 5px;
+    padding-left: 8px;
+    font-size: 20px;
+}
+</style>
+
+
+
+</head>
+<body >
+<!-- partial:index.partial.html -->
+
+<h3>Full moon occurances</h3>
+
+Enter your date of birth to find full moon occurances since your birth date.
+<br>
+<br>
+
+<font color="red" size="4"><i>
+Note : As base data is available only till year 2100, you can enter date of birth till year 2018 as of now.
+</i>
+
+</font>
+<br>
+<br>
+
+<div class="coc-form">
+  <div class="coc-block-row">
+  
+  Date : 
+  <form action="/process" method="POST" class="col s12 m8 offset-m2 l6 offset-l3">
+     
+     <select name="day">
+    {% for day in range(1, 32) %}
+      
+   	 <option value ="{{ day }}"  {% if day == 1 %} selected {% endif %} >{{ day }}</option>
+    
+    {% endfor %}
+    </select>
+    
+    <select name="month">
+    
+    
+   	 <option value ="1" selected>January</option>
+   	 <option value ="2" selected>February</option>
+   	 <option value ="3" selected>March</option>
+   	 <option value ="4" selected>April</option>
+   	 <option value ="5" selected>May</option>
+   	 <option value ="6" selected>June</option>
+   	 <option value ="7" selected>July</option>
+   	 <option value ="8" selected>August</option>
+   	 <option value ="9" selected>September</option>
+   	 <option value ="10" selected>October</option>
+   	 <option value ="11" selected>November</option>
+   	 <option value ="12" selected>December</option>
+   	
+    </select>
+    
+    <select name="year">
+    {% for year in range(1930, 2020) %}
+      
+   	 <option value ="{{ year }}"  {% if year == 2000 %} selected {% endif %} >{{ year }}</option>
+    
+    {% endfor %}
+    </select>
+    
+    <br>
+    <br>
+    
+
+    Time (Hour:Minute) <br>
+    <select name="hour">
+    {% for hour in range(0, 24) %}
+      
+   	 <option value ="{{ hour }}" >{{ hour }}</option>
+    
+    {% endfor %}
+    </select>
+    
+	&nbsp;:&nbsp;
+    
+    <select name="minute">
+    {% for minute in range(0, 60) %}
+      
+   	 <option value ="{{ minute }}" >{{ minute }}</option>
+    
+    {% endfor %}
+    </select>  
+ 
+ <BR/>
+ <BR/>
+ 
+ 	<div>		
+	<button class="btn waves-effect waves-light" type="submit" name="action">
+		<i class="material-icons right">My Full moon Info</i>
+	</button>
+	</div>
+      
+  </form>
+  </div>
+</div>
+<!-- partial -->
+  
+</body>
+</html>
